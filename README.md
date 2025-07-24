@@ -7,7 +7,3 @@ This LaTeX project is intended to be used with [Overleaf](https://www.overleaf.c
 - The main file is `main.tex`.
 - Bibliography is managed via `references.bib`.
 - Figures are ment to be saved in the `figures` folder.
-
-### 🛠️ Local Compilation (optional)
-
-If you prefer to compile locally, a `Makefile`/`build.sh` is included. Use `make` or `./build.sh` to generate the PDF.
