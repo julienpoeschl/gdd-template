@@ -1,155 +1,256 @@
-\documentclass{article}
+\documentclass[11pt,a4paper]{article}
 
 % Language setting
 \usepackage[english]{babel}
 
-% Set page size and margins
-% Replace `letterpaper' with `a4paper' for UK/EU standard size
-\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
-
-% Packages
-\usepackage{amsmath}
+% --- Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{graphicx}
-\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{fontawesome5}
+\usepackage{fancyhdr}
+\usepackage{lipsum}
 
-\title{Game Design Document (GDD)}
-\author{Author}
+% --- Page Setup ---
+\geometry{margin=1in}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   Document start
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --- Colors ---
+\definecolor{maincolor}{HTML}{3949AB}  % Indigo
+\definecolor{accentcolor}{HTML}{FDD835} % Yellow
+\definecolor{lightgray}{gray}{0.95}
+\definecolor{sectioncolor}{HTML}{404040}
+\definecolor{subsectionboxheadercolor}{HTML}{3949AB}
+\definecolor{subsectionboxbodycolor}{HTML}{3949AB}
 
+% --- Fancy Header/Footer ---
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\today}
+\fancyfoot[C]{\textit{\textcopyright~\projectyear}}
+\fancyfoot[R]{\thepage}
+
+\tcbset{
+  chapterstyle/.style={
+      colback=\sectioncolor,
+      colframe=\sectioncolor,
+      coltext=white, 
+      boxrule=0.5pt, 
+      arc=1pt, 
+      boxsep=4pt,
+      fonttitle=\bfseries\Large    % optional: adjust title font
+  },
+      subsectionstyle/.style={
+      coltext=black, 
+      boxrule=0.5pt, 
+      arc=1pt, 
+      boxsep=4pt
+  }
+}
+
+% --- New Commands ---
+\newcommand{\projectyear}{\the\year}
+\newcommand{\Workingtitle}{Project Title}
+\newcommand{\version}{1.0}
+\newcommand{\teamname}{Team Name or Author(s)}
+
+\newcommand{\maincolor}{maincolor}
+\newcommand{\sectioncolor}{sectioncolor}
+\newcommand{\subsectionboxheadercolor}{subsectionboxheadercolor}
+\newcommand{\subsectionboxbodycolor}{subsectionboxbodycolor}
+
+\newcommand{\chapter}[1]{
+    \newpage
+    \begin{tcolorbox}[chapterstyle]
+    \textbf{\Large #1}
+    \end{tcolorbox}
+    \addcontentsline{toc}{section}{#1}
+}
+
+\newcommand{\specific}[2]{
+    \begin{tcolorbox}[subsectionstyle, title=\textbf{#1}]
+    #2
+    \end{tcolorbox}
+    \addcontentsline{toc}{subsection}{#1}
+}
+
+% --- Renewed Commands ---
+\renewcommand{\contentsname}{Overview}
+
+% --- Document ---
 \begin{document}
-\maketitle
 
+% --- Cover Page ---
+\begin{titlepage}
+    \centering
+    {\Huge\bfseries\textcolor{\maincolor}{Game Design Document}}\\[2em]
+    {\Large \Workingtitle}\\[4em]
+    {\Large Version \version}\\[1em]
+    {\large \today}\\[12em]
+    {\Large "A game for everyone is a game for no one." - Arrowhead Studios}
+    \vfill
+    {\includegraphics[width=0.5\textwidth]{example-image}}\\[4em]
+    {\large \teamname}
+\end{titlepage}
+
+% --- Table of Contents ---
+\tableofcontents
 
+% --- Chapter: Marketing ---
+\chapter{Marketing}
 
-\section{General}
+\specific{Delivery Date}{
+Mention your target delivery date.
+}
 
-\subsection{Working Title}
+\specific{Genre}{
+In one sentence, describe the genre of your game.
+}
 
+\specific{Category}{
+Classify your game into established genre categories found in most game markets.
+}
 
+\specific{Similar Titles}{
+Name similar titles to help further classify your game.
+}
 
-\subsection{Game Concept}
+\specific{Setting}{
+Explain the setting of your game world in a single sentence.
+}
 
+\specific{Look}{
+Very briefly describe how the players experience the game.
+}
 
+\specific{High Concept}{
+Write a few paragraphs explaining what the game is about.
+}
 
-\subsection{Genre}
+\specific{Plot}{
+Divide the plot into acts and briefly explain the core of each act.
+}
 
+\specific{Competitive Analysis}{
+Present the market and your competition. Also talk about your unique selling points which sets the game apart.
+}
 
+\specific{Technology}{
+Mention important technologies that will be used during development (e.g., game engine, VR, input schemes, etc.).
+}
 
-\subsection{Inspirations}
+\specific{System Requirements}{
+\begin{itemize}
+    \item Operating System:
+    \item Processor:
+    \item Memory:
+    \item Graphics:
+    \item Download Size:
+\end{itemize}
+}
 
+\specific{Target Platform}{
+Quickly mention on which platform you plan on releasing the game.
+}
 
+\specific{Monetization}{
+Talk about how you plan on making money during development and after release. You can also expand on in-game purchases or future content.
+}
 
-\subsection{Current state}
+\specific{Localization}{
+Shortly present your localization plans.
+}
 
+% --- Chapter: Gameplay Overview ---
+\chapter{Gameplay Overview}
 
+% Add \specific entries here if needed
 
-\section{Business aspects}
+% --- Chapter: Game Flow ---
+\chapter{Game Flow}
 
-\subsection{Target platform}
+% Add \specific entries here if needed
 
+% --- Chapter: Plot Details ---
+\chapter{Plot Details}
 
+% Add \specific entries here if needed
 
-\subsection{Target Audience}
+% --- Chapter: Player Experience ---
+\chapter{Player Experience}
 
+\specific{Key Moments}{
+(Describe key narrative or gameplay moments.)
+}
 
+\specific{Objectives and Progression}{
+(Explain how objectives are presented and how players progress.)
+}
 
-\subsection{Competition}
+% --- Chapter: Art, Sound and Music ---
+\chapter{Art, Sound and Music}
 
+\specific{Music Style}{
+Describe the genre, tone, and instrumentation of the game’s music.
+}
 
+\specific{Art Style}{
+What visual style and inspirations define your game’s art?
+}
 
-\subsection{Unique Selling points}
+\specific{Sound Design}{
+Discuss ambiance, feedback sounds, UI audio, etc.
+}
 
+% --- Chapter: Game Elements and Systems ---
+\chapter{Game Elements and Systems}
 
+\specific{Game World}{
+Describe the structure and layout of your game world.
+}
 
-\subsection{Monetization}
+\specific{User Interface}{
+Explain the design and logic of your in-game UI.
+}
 
+\specific{MVP Systems and Features}{
+Which systems are essential for the first playable version?
+}
 
+\specific{Game Objects}{
+What interactable or visual objects make up your game world?
+}
 
-\subsection{Localization}
+% --- Chapter: Development ---
+\chapter{Development}
 
+\specific{Tools}{
+Which tools (game engines, editors, etc.) will be used?
+}
 
-\section{Player Experience}
+\specific{Development Plan}{
+What are the major phases and milestones?
+}
 
-\subsection{Player Definition}
+\specific{Programming Language}{
+Mention the primary language(s) used and why.
+}
 
+\specific{Directory Structure and File Naming Conventions}{
+What is your folder structure? What naming rules apply?
+}
 
+\specific{Prototype}{
+What will your prototype cover, and how will it be used?
+}
 
-\subsection{Gameplay Loop}
 
-
-
-\subsection{Key Moments}
-
-
-
-\subsection{Art, sound and music}
-
-
-
-\section{Story}
-
-
-
-\section{Story}
-
-
-
-\section{Gameplay}
-
-
-\subsection{Player objectives and progression}
-
-
-
-\subsection{Game world}
-
-
-
-\subsection{User Interface}
-
-
-
-\subsection{MVP Systems and Features}
-
-
-
-
-\subsection{Game Objects}
-
-
-
-\section{Development}
-
-\subsection{Tools}
-
-
-
-\subsection{Development plan}
-
-
-
-\subsection{Risks}
-
-
-
-\section{Technical documentation}
-
-\subsection{Programming language}
-
-
-
-\subsection{Directory structure and file naming conventions}
-
-
-
-\section{Prototype}
-
-
+\newpage
 \bibliographystyle{alpha}
 \bibliography{sample}
 
